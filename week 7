@@ -1,0 +1,26 @@
+class Record:
+    def __init__(self, record_id):
+        self._record_id = record_id  # protected member
+
+    def display(self):
+        print("Record ID :", self._record_id)
+
+
+class StudentRecord(Record):
+    def __init__(self, record_id, name, student_class):
+        super().__init__(record_id)   # inheritance
+        self.name = name
+        self.student_class = student_class
+
+    # method overriding
+    def display(self):
+        print("Student Record Details")
+        print("Record ID :", self._record_id)
+        print("Name      :", self.name)
+        print("Class     :", self.student_class)
+
+
+# Test code for Week 7 output
+if __name__ == "__main__":
+    sr = StudentRecord("2500031530", "Vandana", "1st year")
+    sr.display()
