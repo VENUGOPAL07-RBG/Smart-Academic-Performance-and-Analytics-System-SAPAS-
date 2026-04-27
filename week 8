@@ -1,0 +1,19 @@
+import json
+import os
+
+def save_students(data, filename="students.json"):
+    with open(filename, "w") as file:
+        json.dump(data, file, indent=4)
+    print("Student data saved to JSON file.")
+
+
+def load_students(filename="students.json"):
+    if not os.path.exists(filename):
+        print("JSON file not found.")
+        return {}
+
+    with open(filename, "r") as file:
+        data = json.load(file)
+    print("Student data loaded from JSON file.")
+    return data
+
