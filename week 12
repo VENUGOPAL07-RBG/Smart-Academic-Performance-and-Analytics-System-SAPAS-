@@ -1,0 +1,38 @@
+import matplotlib.pyplot as plt
+
+student_ids = [31530, 31531, 31534]
+python_dst_scores = [85, 72, 60]
+attendance = [92, 80, 68]
+
+# Bar Chart – Subject Scores
+plt.figure()
+plt.bar(student_ids, python_dst_scores)
+plt.xlabel("Student ID")
+plt.ylabel("Python DST Marks")
+plt.title("Python DST Marks Comparison")
+plt.show()
+
+# Line Chart – Performance Trend
+plt.figure()
+plt.plot(student_ids, python_dst_scores, marker="o")
+plt.xlabel("Student ID")
+plt.ylabel("Python DST Marks")
+plt.title("Performance Trend")
+plt.show()
+
+# Pie Chart – Attendance Distribution (Average)
+present = sum(attendance)
+absent = len(attendance) * 100 - present
+
+plt.figure()
+plt.pie([present, absent], labels=["Present", "Absent"], autopct="%1.1f%%")
+plt.title("Attendance Ratio")
+plt.show()
+
+# Histogram – Marks Distribution
+plt.figure()
+plt.hist(python_dst_scores, bins=5)
+plt.xlabel("Marks")
+plt.ylabel("Frequency")
+plt.title("Marks Distribution")
+plt.show()
