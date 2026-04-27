@@ -1,0 +1,15 @@
+student_id = input("Enter Student ID: ")
+name = input("Enter Name: ")
+student_class = input("Enter Class: ")
+gender = input("Enter Gender: ")
+
+subject = input("Enter Subject: ")
+score = int(input("Enter Score: "))
+
+print("\nStudent Details")
+print("ID:", student_id)
+print("Name:", name)
+print("Class:", student_class)
+print("Gender:", gender)
+print("Subject:", subject)
+print("Score:", s)
