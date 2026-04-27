@@ -1,0 +1,32 @@
+class InvalidMarksError(Exception):
+    pass
+
+def validate_marks(marks):
+    if marks < 0 or marks > 100:
+        raise InvalidMarksError("Marks must be between 0 and 100")
+
+class Student:
+    def __init__(self, student_id, name):
+        self.student_id = student_id
+        self.name = name
+        self.marks = {}
+
+    def add_mark(self, subject, marks):
+        validate_marks(marks)
+        self.marks[subject] = marks
+
+    def display(self):
+        print(self.student_id, self.name, self.marks)
+
+def main():
+    try:
+        student = Student(31530, "Student1")
+        student.add_mark("Python DST", 85)
+        student.add_mark("Python DST", 120)
+        student.display()
+    except InvalidMarksError as e:
+        print(e)
+
+if __name__ == "__main__":
+    main()
+
