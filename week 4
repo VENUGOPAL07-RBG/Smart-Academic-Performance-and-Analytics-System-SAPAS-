@@ -1,0 +1,14 @@
+def validate_marks(m):
+    return 0 <= m <= 100
+
+def add_student(students):
+    sid = input("ID: ")
+    marks = int(input("Marks: "))
+    if validate_marks(marks):
+        students.append({"id": sid, "marks": marks})
+    else:
+        print("Invalid Marks")
+
+students = []
+add_student(students)
+print(students)
