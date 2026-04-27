@@ -1,0 +1,27 @@
+class Student:
+    def __init__(self, student_id, name):
+        self.student_id = student_id
+        self.name = name
+        self.marks = {}
+        self.attendance = 0
+
+    def add_mark(self, subject, score):
+        self.marks[subject] = score
+
+    def set_attendance(self, attendance):
+        self.attendance = attendance
+
+    def display(self):
+        print("Student ID :", self.student_id)
+        print("Name       :", self.name)
+        print("Marks      :", self.marks)
+        print("Attendance :", self.attendance)
+
+# Test code ONLY for Week 6 demonstration
+if __name__ == "__main__":
+    s1 = Student("S101", "Rahul")
+    s1.add_mark("Maths", 85)
+    s1.set_attendance(90)
+
+    print("WEEK 6 OUTPUT")
+    s1.display()
