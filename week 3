@@ -1,0 +1,31 @@
+students = []
+
+def clean(text):
+    return text.strip().lower()
+
+while True:
+    print("\n1. Add Student")
+    print("2. Search Student")
+    print("3. View All")
+    print("4. Exit")
+
+    choice = input("Choice: ")
+
+    if choice == '1':
+        sid = clean(input("ID: "))
+        name = clean(input("Name: "))
+        students.append({"id": sid, "name": name})
+
+    elif choice == '2':
+        key = clean(input("Search by ID or Name: "))
+        for s in students:
+            if key in s["id"] or key in s["name"]:
+                print(s)
+
+    elif choice == '3':
+        print("ID     NAME")
+        for s in students:
+            print(s["id"], s["name"])
+
+    elif choice == '4':
+        break
