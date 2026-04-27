@@ -1,0 +1,28 @@
+import pandas as pd
+
+data = {
+    "Student ID": [31530, 31531, 31534],
+    "Python DST": [85, 72, 60],
+    "Attendance": [92, 80, 68]
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+print(df["Python DST"].mean())
+print(df["Python DST"].median())
+print(df["Python DST"].var())
+
+def predict_risk(score, attendance):
+    if score < 40 or attendance < 75:
+        return "High Risk"
+    elif score < 60:
+        return "Medium Risk"
+    return "Low Risk"
+
+df["Risk Level"] = df.apply(
+    lambda row: predict_risk(row["Python DST"], row["Attendance"]),
+    axis=1
+)
+
+print(df)
