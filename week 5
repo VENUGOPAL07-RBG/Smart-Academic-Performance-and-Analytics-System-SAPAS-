@@ -1,0 +1,15 @@
+students = {}
+
+sid = input("Student ID: ")
+students[sid] = {
+    "name": input("Name: "),
+    "class": input("Class: "),
+    "subjects": {
+        input("Subject"): int(input("Marks: "))
+    },
+    "attendance": 0,
+    "remarks": ""
+}
+
+print(students)
+
