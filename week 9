@@ -1,0 +1,80 @@
+import json
+import csv
+
+class Student:
+    def __init__(self, student_id, name):
+        self.student_id = student_id
+        self.name = name
+        self.marks = {}
+        self.attendance = 0
+
+    def add_mark(self, subject, mark):
+        self.marks[subject] = mark
+
+    def set_attendance(self, attendance):
+        self.attendance = attendance
+
+    def display(self):
+        print("Student ID :", self.student_id)
+        print("Name       :", self.name)
+        print("Marks      :", self.marks)
+        print("Attendance :", self.attendance)
+
+def save_students(data, filename="students.json"):
+    with open(filename, "w") as file:
+        json.dump(data, file, indent=4)
+    print("Student data saved successfully (JSON).")
+
+
+def load_students(filename="students.json"):
+    with open(filename, "r") as file:
+        data = json.load(file)
+    print("Student data loaded successfully (JSON).")
+    return data
+
+def export_academic_data(data, filename="academic_data.csv"):
+    with open(filename, "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(["Student ID", "Subject", "Marks"])
+        for sid, details in data.items():
+            for subject, mark in details["marks"].items():
+                writer.writerow([sid, subject, mark])
+    print("Academic data exported successfully (CSV).")
+
+def main():
+    print("SMART ACADEMIC PERFORMANCE & ANALYTICS SYSTEM (SAPAS)")
+    print("---------------------------------------------------")
+
+    # Create Student Object
+    student = Student("S101", "Vandana")
+    student.add_mark("python", 85)
+    student.add_mark("DST", 90)
+    student.set_attendance(92)
+
+    print("\nStudent Details:")
+    student.display()
+
+    # Prepare data for storage
+    students_data = {
+        student.student_id: {
+            "name": student.name,
+            "marks": student.marks,
+            "attendance": student.attendance
+        }
+    }
+
+    # File Handling Operations
+    save_students(students_data)
+    loaded_data = load_students()
+
+
+    print("\nLoaded Data:")
+    print(loaded_data)
+
+    export_academic_data(students_data)
+
+    print("\nWeek 9 Integration Completed Successfully.")
+    
+if __name__ == "__main__":
+    main()
+
